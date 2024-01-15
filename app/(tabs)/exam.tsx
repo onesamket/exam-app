@@ -1,6 +1,6 @@
 import { View, Pressable } from 'react-native';
 import React, { useEffect } from 'react';
-import { useQuestion } from 'hooks/quiz';
+import { useQuestion } from 'hooks/quiz-provider';
 import QuestionCard from 'components/question-card';
 import Text from 'components/app-text';
 import { AntDesign } from '@expo/vector-icons';

@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Text from 'components/app-text';
 import { Link, useRouter } from 'expo-router';
-import useAuthStore from 'hooks/AuthContext';
+import useAuthStore from 'hooks/auth-provider';
 
 const schema = z.object({
   username: z.string(),

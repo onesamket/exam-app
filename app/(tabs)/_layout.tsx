@@ -2,7 +2,7 @@ import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import Text from 'components/app-text';
 import Timer from 'components/timer';
 import { Link, Redirect, Tabs } from 'expo-router';
-import useAuthStore from 'hooks/AuthContext';
+import useAuthStore from 'hooks/auth-provider';
 import { useEffect } from 'react';
 import { Image, Pressable, StyleSheet } from 'react-native';
 

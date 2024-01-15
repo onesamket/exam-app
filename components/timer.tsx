@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Text from './app-text'; // Make sure to import the correct component for text display
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'; // Make sure to import the correct icon component
-import { useQuestion } from 'hooks/quiz';
+import { useQuestion } from 'hooks/quiz-provider';
 import { View } from 'react-native';
 
 const Timer = () => {
