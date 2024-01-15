@@ -1,15 +1,20 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, StyleSheet } from 'react-native';
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />;
-}
+import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import Text from 'components/app-text';
+import Timer from 'components/timer';
+import { Link, Redirect, Tabs } from 'expo-router';
+import useAuthStore from 'hooks/AuthContext';
+import { useEffect } from 'react';
+import { Image, Pressable, StyleSheet } from 'react-native';
 
 export default function TabLayout() {
+  const { authState, init } = useAuthStore();
+  if (!authState?.isAuthenticated) Redirect({ href: '/(auth)/login' });
+  const loadToken = async () => {
+    await init();
+  }
+  useEffect(() => {
+    loadToken();
+  }, [])
   return (
     <Tabs
       screenOptions={{
@@ -18,40 +23,56 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="home-outline" color={color} size={size} />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color="gray"
-                    style={[styles.headerRight, { opacity: pressed ? 0.5 : 1 }]}
-                  />
-                )}
+                <Image
+                  className="w-10 h-10 mx-5 rounded-full"
+                  source={{ uri: 'https://github.com/onesamket.png' }}
+                />
               </Pressable>
             </Link>
           ),
         }}
       />
+
       <Tabs.Screen
-        name="two"
+        name="exam"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "",
+          headerRight: () => <Timer />,
+          headerLeft: () => <Text classes='ml-10 text-xl'>Exam </Text>,
+          tabBarIcon: ({ color, size }) => (
+            <SimpleLineIcons name="question" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+
+        options={{
+          headerLeft: () => <Text classes='ml-5 text-xl'>Profile </Text>,
+          title: '',
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                <Image
+                  className="w-10 h-10 mx-5 rounded-full"
+                  source={{ uri: 'https://github.com/onesamket.png' }}
+                />
+              </Pressable>
+            </Link>
+          ),
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
   );
 }
 
-const styles = StyleSheet.create({
-  headerRight: {
-    marginRight: 15,
-  },
-  tabBarIcon: {
-    marginBottom: -3,
-  },
-});
