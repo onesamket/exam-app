@@ -59,9 +59,9 @@
 
 ### Some screenshot Images
 
-<img href="./assets/design/start-exam.jpg" />
-<img href="./assets/design/detail.jpg" />
-<img href="./assets/design/question.jpg" />
+<img src="./assets/design/start-exam.jpg" />
+<img src="./assets/design/detail.jpg" />
+<img src="./assets/design/question.jpg" />
 
 **NB:** question submit to the backend is not implemented yet.
 
