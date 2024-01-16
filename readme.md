@@ -57,6 +57,12 @@
 
 **Note:** Make sure you have Expo Go installed on your phone, or use an Android emulator or iOS simulator.
 
+### Some screenshot Images
+
+<img href="./assets/design/start-exam.jpg" />
+<img href="./assets/design/detail.jpg" />
+<img href="./assets/design/question.jpg" />
+
 **NB:** question submit to the backend is not implemented yet.
 
 **Simple client and server architecture of exam application**
