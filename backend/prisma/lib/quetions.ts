@@ -7,7 +7,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'HTTP request handling', isCorrect: false },
       { label: 'D', value: 'Frontend development', isCorrect: false },
     ],
-    category: 'SWE',
+    category: 'IT',
   },
   {
     question: 'In the context of the Prisma schema, what does the `isCorrect` field represent?',
@@ -17,7 +17,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'Database index', isCorrect: false },
       { label: 'D', value: 'User authentication status', isCorrect: false },
     ],
-    category: 'SWE',
+    category: 'IT',
   },
   {
     question: 'Which programming language is used in the provided code snippet?',
@@ -37,7 +37,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'User role', isCorrect: false },
       { label: 'D', value: 'Prisma schema', isCorrect: false },
     ],
-    category: 'SWE',
+    category: 'IT',
   },
   {
     question: 'What is the purpose of the `create` array inside the `options` field?',
@@ -57,7 +57,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'User Interface Design (UID)', isCorrect: false },
       { label: 'D', value: 'Data Science (DS)', isCorrect: false },
     ],
-    category: 'ISC',
+    category: 'IT',
   },
   {
     question: 'What is the significance of the `collage` field in user creation?',
@@ -77,7 +77,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'New York', isCorrect: false },
       { label: 'D', value: 'London', isCorrect: false },
     ],
-    category: 'ISC',
+    category: 'IT',
   },
   {
     question: 'In the context of Prisma, what is the purpose of `$disconnect` method?',
@@ -87,7 +87,7 @@ export const SampleQuestions = [
       { label: 'C', value: 'Rollback a transaction', isCorrect: false },
       { label: 'D', value: 'Authenticate a user', isCorrect: false },
     ],
-    category: 'SWE',
+    category: 'IT',
   },
   {
     question: 'What is the role of the `role` field in user creation?',

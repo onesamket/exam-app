@@ -44,7 +44,7 @@ userRouter.get('/profile', authentication, async (req: any, res: Response) => {
   try {
     // Extract user information from the request object
     const { username } = req.user as { username: string };
-
+    console.log(req.user);
     // Fetch user profile data from the database using Prisma
     const userProfile = await prisma.user.findFirst({
       where: {

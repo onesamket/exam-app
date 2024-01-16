@@ -17,7 +17,7 @@ type FormType = z.infer<typeof schema>;
 
 const SignInPage = () => {
   const router = useRouter();
-  const { onLogin, authState: { error } } = useAuthStore();
+  const { onLogin, authState: { error, isAuthenticated } } = useAuthStore();
   const { control, handleSubmit, formState: { errors } } = useForm<FormType>({
     resolver: zodResolver(schema),
   });
@@ -26,7 +26,7 @@ const SignInPage = () => {
     const result = await onLogin(data.username, data.password);
     if (result.success) router.push("/(tabs)/")
   };
-
+  if (isAuthenticated) return router.push('/(tabs)/profile')
   return (
     <View
       className='flex flex-1 items-center justify-center flex-col w-screen px-5'
@@ -52,6 +52,8 @@ const SignInPage = () => {
           control={control}
           render={({ field }) => (
             <TextInput
+              secureTextEntry
+              inputMode='email'
               className='w-full border border-slate-500 px-5 py-2 my-2 rounded-md'
               placeholder='*********'
               onChangeText={field.onChange}

@@ -4,17 +4,22 @@ import { useQuestion } from 'hooks/quiz-provider';
 import QuestionCard from 'components/question-card';
 import Text from 'components/app-text';
 import { AntDesign } from '@expo/vector-icons';
+import useAuthStore from 'hooks/auth-provider';
 
 const ExamPage = () => {
+    const { authState: { user } } = useAuthStore();
     const { questions, time, onNext, onPrev, currentQuestionIndex, loadQuestion, onAnswer, score } =
         useQuestion();
 
     useEffect(() => {
-        loadQuestion();
+        console.log(user)
+        loadQuestion(user?.department!, questions.length * 60);
     }, []);
 
     if (questions.length === 0) {
-        return <Text>Loading questions...</Text>;
+        return <View className='flex-1 h-full items-center justify-center'>
+            <Text>Loading questions...</Text>;
+        </View>
     }
 
     return (
@@ -55,8 +60,6 @@ const ExamPage = () => {
                     <AntDesign name="warning" size={45} color="red" />
                     <Text classes='text-2xl text-center'>Time is Up!</Text>
                 </View>
-
-
             }
         </>
 

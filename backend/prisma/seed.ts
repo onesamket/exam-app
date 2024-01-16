@@ -24,20 +24,20 @@ async function seed() {
   const user1 = await prisma.user.create({
     data: {
       name: 'John Doe',
-      username: 'john_doe',
-      password: 'secure_password',
-      collage: 'Example College',
-      department: 'CS',
+      username: 'john',
+      password: 'password',
+      college: 'Collage Of CCI ',
+      department: 'IT',
       role: 'ADMIN',
     },
   });
 
   const user2 = await prisma.user.create({
     data: {
-      name: 'Jane Doe',
-      username: 'jane_doe',
-      password: 'another_secure_password',
-      collage: 'Sample University',
+      name: 'Abebe kebede',
+      username: 'abebe',
+      password: 'abe123',
+      college: 'collage of CCI',
       department: 'SWE',
       role: 'USER',
     },

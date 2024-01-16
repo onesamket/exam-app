@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, Text, View } from 'react-native';
+import PersonalInfo from 'components/personal-info';
+import { View } from 'react-native';
 
 export default function ModalScreen() {
   return (
     <View className={styles.container}>
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Text className={styles.title}>Modal</Text>
-      <View className={styles.separator} />
+      <PersonalInfo />
     </View>
   );
 }

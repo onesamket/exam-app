@@ -1,19 +1,26 @@
 import { Pressable, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Text from './app-text';
 import { useRouter } from 'expo-router';
+import useAuthStore from 'hooks/auth-provider';
+import { useQuestion } from 'hooks/quiz-provider';
 
 const PersonalInfo = () => {
+  const { authState: { user } } = useAuthStore();
+  const { loadQuestion, questions } = useQuestion();
+  useEffect(() => {
+    loadQuestion(user?.department!, questions.length * 60);
+  }, [])
   const router = useRouter();
   return (
     <View className="flex flex-1 items-center  justify-center">
       <View>
         <Text classes="text-2xl py-3"> Your Detail</Text>
-        <Text>Name:Abebe Kebede</Text>
-        <Text>Collage:CCI</Text>
-        <Text>Department:SWE</Text>
-        <Text>UID:239737</Text>
-        <Text>Total Exam :102 Questions</Text>
+        <Text>Name:{user?.name}</Text>
+        <Text>Collage:{user?.college}</Text>
+        <Text>Department:{user?.department}</Text>
+        <Text>Total Exam :{questions.length} Questions</Text>
+        <Text>time allowed {questions.length}:00 {" "} Minutes</Text>
       </View>
       <Pressable
         onPress={() => router.push('/(tabs)/profile')}

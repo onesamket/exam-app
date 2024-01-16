@@ -1,5 +1,5 @@
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import { NextFunction, Response } from 'express';
 
 const SessionSecret = process.env.SESSION_SECRET!;
 export default function authentication(req: any, res: Response, next: NextFunction) {
@@ -9,13 +9,11 @@ export default function authentication(req: any, res: Response, next: NextFuncti
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-
     const decodedToken = jwt.verify(token, SessionSecret);
 
     if (!decodedToken) {
       return res.status(401).json({ message: 'Invalid token' });
     }
-
     req.user = decodedToken;
     next();
   } catch (error) {

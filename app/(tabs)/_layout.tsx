@@ -4,11 +4,11 @@ import Timer from 'components/timer';
 import { Link, Redirect, Tabs } from 'expo-router';
 import useAuthStore from 'hooks/auth-provider';
 import { useEffect } from 'react';
-import { Image, Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 
 export default function TabLayout() {
-  const { authState, init } = useAuthStore();
-  if (!authState?.isAuthenticated) Redirect({ href: '/(auth)/login' });
+  const { authState: { isAuthenticated, user }, init } = useAuthStore();
+  if (!isAuthenticated) Redirect({ href: '/(auth)/login' });
   const loadToken = async () => {
     await init();
   }
@@ -23,17 +23,19 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: '',
+          headerLeft: () => <Text classes='ml-10 text-xl'>Well Come {user?.name} </Text>,
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="home-outline" color={color} size={size} />
           ),
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link
+              className=' flex items-center justify-center  w-10 bg-slate-300  h-10 mx-5 rounded-full'
+              href="/modal" asChild>
               <Pressable>
-                <Image
-                  className="w-10 h-10 mx-5 rounded-full"
-                  source={{ uri: 'https://github.com/onesamket.png' }}
-                />
+                <Text
+                  classes='text-xl'
+                >{user?.name.substring(0, 2).toUpperCase()}</Text>
               </Pressable>
             </Link>
           ),
@@ -58,12 +60,13 @@ export default function TabLayout() {
           headerLeft: () => <Text classes='ml-5 text-xl'>Profile </Text>,
           title: '',
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link
+              className=' flex items-center justify-center  w-10 bg-slate-300  h-10 mx-5 rounded-full'
+              href="/modal" asChild>
               <Pressable>
-                <Image
-                  className="w-10 h-10 mx-5 rounded-full"
-                  source={{ uri: 'https://github.com/onesamket.png' }}
-                />
+                <Text
+                  classes='text-xl'
+                >{user?.name.substring(0, 2).toUpperCase()}</Text>
               </Pressable>
             </Link>
           ),

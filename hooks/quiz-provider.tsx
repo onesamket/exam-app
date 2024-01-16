@@ -21,15 +21,15 @@ type StoreType = {
   answered: Answer[];
   questions: QuestionType[];
   category: string;
-  loadQuestion: () => void;
+  loadQuestion: (department: string, time: number) => void;
   onPrev: () => void;
   onNext: () => void;
   onAnswer: (data: Answer) => void;
   onSubmit: (data: User) => void;
 };
 
-const loadExam = async () => {
-  const data = await getQuestions();
+const loadExam = async (department: string) => {
+  const data = await getQuestions(department);
   return data;
 };
 
@@ -51,12 +51,13 @@ export const useQuestion = create<StoreType>((set) => ({
   questions: [],
   category: '',
   score: 0,
-  loadQuestion: async () => {
-    const questionsData = await loadExam();
+  // load question from the server 
+  loadQuestion: async (department: string, time = 10) => {
+    const questionsData = await loadExam(department);
     set((state) => ({
       questions: questionsData,
       time: {
-        initialTime: 10,
+        initialTime: time,
         start: true,
         onClose: () => {
           set({

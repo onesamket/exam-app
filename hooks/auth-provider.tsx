@@ -29,14 +29,13 @@ const useAuthStore = create<AuthStore>((set) => ({
       const result = await apiClient.post('/user/login', { username, password });
 
       if (result && result.data) {
-        const userData = result.data.user; // Assuming the user data is available in the response
         set((state) => ({
           authState: {
             ...state.authState,
-            user: userData,
+            user: result.data.user,
             token: result.data.token,
             isAuthenticated: true,
-            error: null, // Reset error on successful login
+            error: null,
           },
         }));
         await saveSession('token', result.data.token);
@@ -52,7 +51,6 @@ const useAuthStore = create<AuthStore>((set) => ({
           error: 'Invalid credentials',
         },
       }));
-
       return { success: false, message: 'Invalid credentials!' };
     }
   },
@@ -63,7 +61,7 @@ const useAuthStore = create<AuthStore>((set) => ({
         user: null,
         token: null,
         isAuthenticated: null,
-        error: null, // Reset error on logout
+        error: null,
       },
     }));
   },
@@ -72,27 +70,26 @@ const useAuthStore = create<AuthStore>((set) => ({
       const session = await LoadSession('token');
       if (session) {
         console.log(session)
-        // Fetch user data based on the token
         const userDataResult = await apiClient.get('/user/profile', {
-          headers: { Authorization: `Bearer ${session}` },
+          headers: { Authorization: `token ${session}` },
         });
 
         if (userDataResult && userDataResult.data) {
           const userData = userDataResult.data;
+          console.log(userData)
           set((state) => ({
             authState: {
               ...state.authState,
               user: userData,
               token: session,
               isAuthenticated: true,
-              error: null, // Reset error on successful init
+              error: null,
             },
           }));
         }
       }
     } catch (error) {
       console.error('something wants wrong', error);
-      // Set the error message in the state
       set((state) => ({
         authState: {
           ...state.authState,

@@ -3,7 +3,7 @@ type User = {
   name: string;
   username: string;
   password: string;
-  collage: string;
+  college: string;
   department: string;
   role: string;
 };

@@ -7,7 +7,7 @@ type Props = {
   question: string;
   questionNumber: number;
   options: Option[];
-  onAnswer: (data: Answer) => void; // Add onAnswer prop
+  onAnswer: (data: Answer) => void;
 };
 
 const QuestionCard = ({ options, question, questionNumber, onAnswer }: Props) => {

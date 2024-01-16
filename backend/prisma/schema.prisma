@@ -6,7 +6,6 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
-  // directUrl = env("DIRECT_URL")
 }
 
 model Question {
@@ -16,20 +15,12 @@ model Question {
   category String
 }
 
-// enum Category {
-//   IT
-//   SWE
-//   CS
-//   ISC
-//   IS
-// }
-
 model User {
   id         String @id @default(cuid())
   name       String
   username   String
   password   String
-  collage    String
+  college    String
   department String
   role       String @default("USER")
 }
