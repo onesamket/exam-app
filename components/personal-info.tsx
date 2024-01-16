@@ -2,11 +2,11 @@ import { Pressable, View } from 'react-native';
 import React, { useEffect } from 'react';
 import Text from './app-text';
 import { useRouter } from 'expo-router';
-import useAuthStore from 'hooks/auth-provider';
 import { useQuestion } from 'hooks/quiz-provider';
+import useAuth from 'hooks/auth-provider';
 
 const PersonalInfo = () => {
-  const { authState: { user } } = useAuthStore();
+  const { authState: { user } } = useAuth();
   const { loadQuestion, questions } = useQuestion();
   useEffect(() => {
     loadQuestion(user?.department!, questions.length * 60);

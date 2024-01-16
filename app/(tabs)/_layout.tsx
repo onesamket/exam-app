@@ -2,19 +2,21 @@ import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import Text from 'components/app-text';
 import Timer from 'components/timer';
 import { Link, Redirect, Tabs } from 'expo-router';
-import useAuthStore from 'hooks/auth-provider';
+import useAuth from 'hooks/auth-provider';
 import { useEffect } from 'react';
 import { Pressable } from 'react-native';
 
 export default function TabLayout() {
-  const { authState: { isAuthenticated, user }, init } = useAuthStore();
-  if (!isAuthenticated) Redirect({ href: '/(auth)/login' });
+  const { authState: { isAuthenticated, user } } = useAuth();
+  const { init } = useAuth();
   const loadToken = async () => {
     await init();
   }
   useEffect(() => {
     loadToken();
   }, [])
+  // redirect the user if  he is not logged in 
+  if (!isAuthenticated) return Redirect({ href: '/(auth)/login' });
   return (
     <Tabs
       screenOptions={{

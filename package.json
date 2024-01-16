@@ -59,5 +59,9 @@
       ]
     }
   },
+  "author": {
+    "email": "onesamket@gmail.com",
+    "name": "Tewodros Birhanu"
+  },
   "private": true
 }

@@ -5,6 +5,7 @@ import PersonalInfo from 'components/personal-info'
 const ProfilePage = () => {
   return (
     <View className={styles.container}>
+      {/* display user information   */}
       <PersonalInfo />
     </View>
   )

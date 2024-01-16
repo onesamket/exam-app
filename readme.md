@@ -1,6 +1,19 @@
 ### Simple quiz application
 
-instruction
+**What we use to implement the project**
+
+- **React-native**: mobile app framework
+- **expo** React-native framework
+- **Zustand**: state management
+- **zod**: schema based validation library
+- **react-hook-form**: React from validation library
+- **Axios**: HTTP Client
+- **Nativewind**: styling our application
+- **expressJS**: for backend framework
+- **Prisma**: ORM
+- **SQLlite**: database:
+
+**instruction**
 
 - clone the repo
   ```sh
@@ -31,21 +44,29 @@ instruction
   ```
   👉 this command create our database and seed some dummy data.
 - once your database sated up you're ready to start the server
+
   ```sh
   npm run dev
   ```
+
   👉 after running your server navigate back and run client application
 
-```sh
-npx expo start
-```
+- ```sh
+  npx expo start
+  ```
 
 **Note:** Make sure you have Expo Go installed on your phone, or use an Android emulator or iOS simulator.
 
-#### Simple client and server architecture of exam application
+**NB:** question submit to the backend is not implemented yet.
 
-<img src="./assets/design/client-and-server-communication.png" />
+**Simple client and server architecture of exam application**
+
+<img src="./assets/design/app-architecture.png" />
 
 #### Simple exam app user interact design phototype
 
 <img src="./assets/design/exam-app-ui-design.png" />
+
+**contact me**
+[Gmail](https://onesamket@gmail.com)
+[Github](https://github.com/onesamket)

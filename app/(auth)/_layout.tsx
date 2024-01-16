@@ -1,12 +1,11 @@
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
+import useAuth from "hooks/auth-provider";
 
 const AuthLayout = () => {
-  return <Stack screenOptions={{
-    headerShown: false,
-  }}>
-    <Stack.Screen name='login' options={{
-    }} />
-  </Stack>;
-};
-
+  const { authState: { isAuthenticated } } = useAuth();
+  if (isAuthenticated) return Redirect({ href: "/(tabs)/profile" })
+  return (
+    <Stack />
+  )
+}
 export default AuthLayout;

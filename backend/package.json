@@ -1,8 +1,8 @@
 {
-  "name": "server",
+  "name": "exam-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "exam-app backend server",
+  "main": "index.ts",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
@@ -11,7 +11,10 @@
     "start": "tsc && node ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "email": "onesamket@gmail.com",
+    "name": "Tewodros Birhanu"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

@@ -25,6 +25,7 @@ const QuestionCard = ({ options, question, questionNumber, onAnswer }: Props) =>
           <Pressable
             key={question.id}
             className={`border  p-2 my-1 rounded ${selected && selected === question.id ? 'border-green-400' : 'border-slate-400'}`}
+            //  to demonstrate  the  correct answer from the options
             onPress={() => {
               setSelect(question.id);
               onAnswer({

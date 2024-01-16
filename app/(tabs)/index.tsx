@@ -1,11 +1,11 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { GuideLine } from 'components/guide-line';
-import PersonalInfo from 'components/personal-info';
 
 export default function TabOneScreen() {
   return (
     <View className={styles.container}>
+      {/* display simple guideline for the user  */}
       <GuideLine />
     </View>
   );
