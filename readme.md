@@ -56,7 +56,9 @@
   ```
 
 **Note:** Make sure you have Expo Go installed on your phone, or use an Android emulator or iOS simulator.
-
+### example user 
+- username:abebe 
+- password:abe123
 ### Some screenshot Images
 
 <img src="./assets/design/start-exam.jpg" />
